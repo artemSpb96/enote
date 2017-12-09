@@ -5,6 +5,7 @@ import javax.sql.DataSource;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
@@ -16,6 +17,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @PropertySource({"classpath:hibernate.properties"})
+@ComponentScan("com.epam.enote")
 public class DatabaseConfig {
 
     @Autowired
@@ -59,7 +61,7 @@ public class DatabaseConfig {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
 
         dataSource.setDriverClassName("org.h2.Driver");
-        dataSource.setUrl("jdbc:h2:file:~/h2/enote_db");
+        dataSource.setUrl("jdbc:h2:file:~/h2/enote_db;MV_STORE=FALSE;MVCC=FALSE");
 
         return dataSource;
 

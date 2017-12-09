@@ -1,22 +1,14 @@
 package com.epam.enote.dao;
 
 import com.epam.enote.model.User;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class UserDAO {
-
-    @Autowired
-    SessionFactory sessionFactory;
-
-    public User getById(Long id) {
-        return (User) sessionFactory.getCurrentSession().get(User.class, id);
+@Scope(BeanDefinition.SCOPE_PROTOTYPE)
+public class UserDAO extends AbstractHibernateDAO<User> {
+    public UserDAO() {
+        setClazz(User.class);
     }
-
-    public void save(User user) {
-        sessionFactory.getCurrentSession().saveOrUpdate(user);
-    }
-
 }

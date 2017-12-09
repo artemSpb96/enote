@@ -21,11 +21,11 @@ public class UserDAOTest {
 
     @Test
     public void testSave() {
-        User user = new User(1L, "testName", "testSurname");
+        User user = new User("testName", "testSurname");
 
-        userDAO.save(user);
+        Long id = userDAO.save(user);
 
-        assertEquals(user, userDAO.getById(1L));
+        assertEquals(user, userDAO.findOne(id));
     }
 
 }
