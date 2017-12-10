@@ -20,7 +20,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {TestDatabaseConfig.class, UserDAOImpl.class})
 @Transactional
-public class UserDAOTest {
+public class ITUserDAOTest {
 
     private static final String TEST_NAME_1 = "test1";
     private static final String TEST_NAME_2 = "test2";
