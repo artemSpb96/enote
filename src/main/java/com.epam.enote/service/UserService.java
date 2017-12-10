@@ -17,10 +17,10 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     @Autowired
-    UserDAO userDAO;
+    private UserDAO userDAO;
 
     @Autowired
-    NotebookDAO notebookDAO;
+    private NotebookDAO notebookDAO;
 
 
     public User getUser(Long userId) {
@@ -38,7 +38,7 @@ public class UserService {
 
         checkNotNull(user);
 
-        notebook.setId(user.getId());
+        notebook.setUser(user);
         notebook.setTimestamp(LocalDateTime.now());
 
         return notebookDAO.save(notebook);
