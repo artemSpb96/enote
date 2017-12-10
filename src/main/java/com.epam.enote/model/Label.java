@@ -1,6 +1,7 @@
 package com.epam.enote.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,7 +18,6 @@ import lombok.Setter;
 @Table(name = "label")
 @Getter
 @Setter
-@NoArgsConstructor
 public class Label implements Serializable {
 
     @Id
@@ -27,4 +27,12 @@ public class Label implements Serializable {
 
     @ManyToMany(mappedBy = "labels")
     private Set<Note> notes;
+
+    public Label() {
+        notes = new HashSet<>();
+    }
+
+    public boolean addNote(Note note) {
+        return notes.add(note);
+    }
 }

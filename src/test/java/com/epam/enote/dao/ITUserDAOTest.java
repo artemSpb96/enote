@@ -5,7 +5,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
 import com.epam.enote.config.TestDatabaseConfig;
-import com.epam.enote.dao.impl.UserDAOImpl;
+import com.epam.enote.dao.impl.UserDAO;
 import com.epam.enote.model.User;
 import java.util.List;
 import javax.transaction.Transactional;
@@ -18,7 +18,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {TestDatabaseConfig.class, UserDAOImpl.class})
+@ContextConfiguration(classes = {TestDatabaseConfig.class, UserDAO.class})
 @Transactional
 public class ITUserDAOTest {
 
@@ -26,7 +26,7 @@ public class ITUserDAOTest {
     private static final String TEST_NAME_2 = "test2";
 
     @Autowired
-    UserDAOImpl userDAO;
+    UserDAO userDAO;
 
     @Before
     public void setUp() {

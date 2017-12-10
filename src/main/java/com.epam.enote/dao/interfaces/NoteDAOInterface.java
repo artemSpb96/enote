@@ -1,5 +1,5 @@
 package com.epam.enote.dao.interfaces;
 
-public interface LabelDAO {
+public interface NoteDAOInterface {
 
 }

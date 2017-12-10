@@ -1,6 +1,7 @@
 package com.epam.enote.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -18,7 +19,6 @@ import lombok.Setter;
 @Table(name = "user")
 @Getter
 @Setter
-@NoArgsConstructor
 public class User implements Serializable{
 
     @Id
@@ -35,8 +35,17 @@ public class User implements Serializable{
     @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "user")
     private List<Notebook> notebooks;
 
+    public User() {
+        notebooks = new ArrayList<>();
+    }
+
     public User(String name, String surname) {
+        this();
         this.name = name;
         this.surname = surname;
+    }
+
+    public void addNotebook(Notebook notebook) {
+        notebooks.add(notebook);
     }
 }

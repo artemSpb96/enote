@@ -1,7 +1,7 @@
 package com.epam.enote.dao.impl;
 
 import com.epam.enote.dao.AbstractHibernateDAO;
-import com.epam.enote.dao.interfaces.UserDAO;
+import com.epam.enote.dao.interfaces.UserDAOInterface;
 import com.epam.enote.model.User;
 import java.util.List;
 import org.hibernate.query.Query;
@@ -11,8 +11,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
-public class UserDAOImpl extends AbstractHibernateDAO<User> implements UserDAO {
-    public UserDAOImpl() {
+public class UserDAO extends AbstractHibernateDAO<User> implements UserDAOInterface {
+    public UserDAO() {
         setClazz(User.class);
     }
 
