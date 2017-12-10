@@ -1,5 +1,7 @@
 package com.epam.enote.service;
 
+import static com.epam.enote.service.utils.ServiceUtils.checkNotNull;
+
 import com.epam.enote.dao.impl.LabelDAO;
 import com.epam.enote.model.Label;
 import javax.transaction.Transactional;
@@ -14,11 +16,16 @@ public class LabelService {
     private LabelDAO labelDAO;
 
     public Label getLabel(Long labelId) {
-        return labelDAO.findOne(labelId);
+        Label label = labelDAO.findOne(labelId);
+        checkNotNull(label);
+
+        return label;
     }
 
     public void delete(Long labelId) {
         Label label = labelDAO.findOne(labelId);
+        checkNotNull(label);
+
         labelDAO.delete(label);
     }
 
