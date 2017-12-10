@@ -11,10 +11,12 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "label")
 @Getter
+@Setter
 @NoArgsConstructor
 public class Label implements Serializable {
 

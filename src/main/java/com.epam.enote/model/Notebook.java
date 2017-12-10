@@ -20,6 +20,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "notebook")
 @Getter
+@Setter
 public class Notebook implements Serializable{
 
     @Id

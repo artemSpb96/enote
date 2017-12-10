@@ -16,10 +16,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "note")
 @Getter
+@Setter
 public class Note implements Serializable {
 
     @Id
