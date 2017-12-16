@@ -8,9 +8,11 @@ import com.epam.enote.dao.impl.UserDAO;
 import com.epam.enote.model.Notebook;
 import com.epam.enote.model.User;
 import java.time.LocalDateTime;
+import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Service
 @Transactional
@@ -22,6 +24,15 @@ public class UserService {
     @Autowired
     private NotebookDAO notebookDAO;
 
+    public List<User> getUsers() {
+        return userDAO.findAll();
+    }
+
+    public Long addUser(User user) {
+        checkNotNull(user);
+
+        return userDAO.save(user);
+    }
 
     public User getUser(Long userId) {
         User user = userDAO.findOne(userId);
@@ -54,6 +65,19 @@ public class UserService {
         notebookBelongsToUser(notebook, user);
 
         notebookDAO.delete(notebook);
+    }
+
+    public void updateUser(Long id, User updatedUser) {
+        checkNotNull(updatedUser);
+
+        User user = userDAO.findOne(id);
+
+        checkNotNull(user);
+
+        user.setName(updatedUser.getName());
+        user.setSurname(updatedUser.getSurname());
+
+        userDAO.save(user);
     }
 
     public void updateName(Long id, String name) {
