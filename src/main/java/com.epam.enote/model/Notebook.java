@@ -3,6 +3,7 @@ package com.epam.enote.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -43,5 +44,10 @@ public class Notebook implements Serializable{
 
     public Notebook() {
         timestamp = LocalDateTime.now();
+        notes = new ArrayList<>();
+    }
+
+    public void addNote(Note note) {
+        notes.add(note);
     }
 }

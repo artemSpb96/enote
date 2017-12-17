@@ -26,7 +26,7 @@ public class ITUserDAOTest {
     private static final String TEST_NAME_2 = "test2";
 
     @Autowired
-    UserDAO userDAO;
+    private UserDAO userDAO;
 
     @Before
     public void setUp() {
@@ -35,7 +35,6 @@ public class ITUserDAOTest {
 
         userDAO.save(user1);
         userDAO.save(user2);
-
     }
 
     @After

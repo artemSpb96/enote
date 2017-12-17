@@ -57,27 +57,12 @@ public class NoteService {
     public void updateNote(Long userId, Long notebookId, Long noteId, Note updatedNote) {
         checkNotNull(updatedNote);
 
-        Notebook notebook = notebookService.getNotebook(userId, notebookId);
-
-        Note note = noteDAO.findOne(noteId);
-        checkNotNull(note);
-
-        noteBelongsToNotebook(note, notebook);
+        Note note = getNote(userId, notebookId, noteId);
 
         note.setContent(updatedNote.getContent());
         note.setTimestamp(LocalDateTime.now());
 
         noteDAO.save(note);
-    }
-
-    public void updateContent(Long id, String content) {
-        Note note = noteDAO.findOne(id);
-
-        checkNotNull(note);
-
-        note.setContent(content);
-        note.setTimestamp(LocalDateTime.now());
-        noteDAO.update(note);
     }
 
     public Long addLabel(Long noteId, Label label) {
@@ -107,12 +92,5 @@ public class NoteService {
         note.getLabels().removeAll(labelsToRemove);
 
         noteDAO.update(note);
-    }
-
-    public void deleteNote(Long id) {
-        Note note = noteDAO.findOne(id);
-        checkNotNull(note);
-
-        noteDAO.delete(note);
     }
 }

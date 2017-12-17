@@ -17,13 +17,4 @@ public class NotebookDAO extends AbstractHibernateDAO<Notebook> implements
     public NotebookDAO() {
         setClazz(Notebook.class);
     }
-
-    @Override
-    public List<Notebook> findAllByUserId(Long userId) {
-        Query<Notebook> query = getCurrentSession()
-            .createQuery("from " + Notebook.class.getName() + " where user_id = '" + userId + "'",
-                Notebook.class);
-
-        return query.list();
-    }
 }

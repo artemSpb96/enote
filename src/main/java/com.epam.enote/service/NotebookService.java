@@ -52,12 +52,7 @@ public class NotebookService {
     public Long addNote(Long userId, Long notebookId, Note note) {
         checkNotNull(note);
 
-        User user = userService.getUser(userId);
-
-        Notebook notebook = notebookDAO.findOne(notebookId);
-        checkNotNull(notebook);
-
-        notebookBelongsToUser(notebook, user);
+        Notebook notebook = getNotebook(userId, notebookId);
 
         note.setTimestamp(LocalDateTime.now());
         note.setNotebook(notebook);
@@ -66,12 +61,7 @@ public class NotebookService {
     }
 
     public void removeNote(Long userId, Long notebookId, Long noteId) {
-        User user = userService.getUser(userId);
-
-        Notebook notebook = notebookDAO.findOne(notebookId);
-        checkNotNull(notebook);
-
-        notebookBelongsToUser(notebook, user);
+        Notebook notebook = getNotebook(userId, notebookId);
 
         Note note = noteDAO.findOne(noteId);
         checkNotNull(note);
@@ -79,12 +69,5 @@ public class NotebookService {
         noteBelongsToNotebook(note, notebook);
 
         noteDAO.delete(note);
-    }
-
-    public void deleteNotebook(Long id) {
-        Notebook notebook = notebookDAO.findOne(id);
-        checkNotNull(notebook);
-
-        notebookDAO.delete(notebook);
     }
 }
