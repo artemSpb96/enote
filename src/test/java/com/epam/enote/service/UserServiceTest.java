@@ -95,7 +95,6 @@ public class UserServiceTest {
         userService.addNotebook(USER_TEST_ID, notebook);
     }
 
-
     @Test
     public void removeNotebook() {
         user.addNotebook(notebook);
@@ -153,7 +152,6 @@ public class UserServiceTest {
 
         userService.updateName(USER_TEST_ID, "newName");
     }
-
 
     @Test
     public void updateSurname() {
