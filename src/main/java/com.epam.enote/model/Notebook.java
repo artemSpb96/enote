@@ -1,5 +1,6 @@
 package com.epam.enote.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -31,10 +32,12 @@ public class Notebook implements Serializable{
     @Column(name = "timestamp")
     private LocalDateTime timestamp;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    @JsonIgnore
     @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "notebook")
     private List<Note> notes;
 
